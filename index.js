@@ -64,3 +64,11 @@ app.get('/webhook', (req, res) => {
         }
     }
 });
+
+
+
+
+app.get('/', (req, res) => {
+
+    console.log('Its fine');
+});
