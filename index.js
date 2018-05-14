@@ -4,7 +4,26 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     app = express().use(bodyParser.json());
 
-app.listen(process.env.PORT || 1337, () => console.log('Webhook is listening'));
+
+
+var http = require('http');
+http.createServer(function (req, res) {
+    if (req.url == '/') {
+        res.writeHead(200, {
+            'Content-Type': 'text/html',
+        });
+        res.write('<h1>index!</h1>');
+        res.end();
+    } else {
+        res.writeHead(200, {
+            'Content-Type': 'text/html',
+        });
+        res.write('<h1>404</h1>');
+        res.end();
+    }
+    //process.env.PORT由主機決定port是多少
+    //或主機沒有設定port的話，就指定port為3000
+}).listen(process.env.PORT || 3000);
 
 
 //create the endpoint of our webhook
